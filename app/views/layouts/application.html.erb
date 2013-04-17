@@ -42,7 +42,7 @@
       <a class="brand" href="#">DevDo</a>
       <div class="nav-collapse collapse">
         <ul class="nav">
-          <li class="active"><a href="#">Users</a></li>
+          <li class="active"><%= link_to "Users", :controller => "users"%></li>
           <li><a href="#about">About</a></li>
         </ul>
       </div><!--/.nav-collapse -->
@@ -54,7 +54,7 @@
   <%= yield %>
 </div> <!-- /container -->
 
-<%= javascript_include_tag "application" %>
+<%= javascript_include_tag "application"%>
 
 
 </body>

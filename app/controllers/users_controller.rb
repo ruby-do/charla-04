@@ -10,7 +10,10 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(params[:id])
+
+    @user = User.find(params[:id]) if params.has_key? "id"
+    @user = User.find_by_userName(params[:userName]) if params.has_key? "userName"
+
 
     respond_to do |format|
       format.html # show.html.erb
@@ -59,7 +62,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to users_path, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

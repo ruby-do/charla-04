@@ -3,16 +3,18 @@
 <table class="table table-bordered">
   <thead>
       <tr>
-        <th>First name</th>
-        <th>last name</th>
+        <th>Id</th>
+        <th>Name</th>
+        <th>User Name</th>
         <th>creation date</th>
         <th></th>
       </tr>
   </thead>
 <% @users.each do |user| %>
   <tr>
-    <td><%= user.first_name%></td>
-    <td><%= user.last_name%></td>
+    <td><%= user.id%></td>
+    <td><%= formal_name(user) %></td>
+    <td><%= user.userName %></td>
     <td><%= user.creation_date%></td>
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
