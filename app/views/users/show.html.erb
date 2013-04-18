@@ -1,10 +1,24 @@
 <p id="notice"><%= notice %></p>
 
+<%= link_to 'Create Task', new_user_tasks_path(@user), :class => "btn" %>
+
 <p>
-  <b>First name,last name,email,creation date:</b>
+  <b>First name</b>
   <%= @user.first_name %>
 </p>
 
+<p>
+  <b>Last name</b>
+  <%= @user.last_name %>
+</p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<hr/>
+
+<div>
+  <%= render :partial => "tasks/task_list", :locals => {:tasks => @user.tasks} %>
+
+</div>
+
+
+<%= link_to 'Edit', edit_user_path(@user), :class => "btn btn-primary" %>
+<%= link_to 'Back', users_path, :class => 'btn' %>

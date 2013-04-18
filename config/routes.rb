@@ -3,6 +3,8 @@ DevDo::Application.routes.draw do
     resource :tasks
   end
 
+  match ':userName/tasks' => 'tasks#index', :as => 'user_tasks_paths'
+
   match ':userName' => 'users#show'
 
   # The priority is based upon order of creation:
