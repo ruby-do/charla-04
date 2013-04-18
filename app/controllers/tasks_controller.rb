@@ -6,6 +6,12 @@ class TasksController < ApplicationController
     respond_with @tasks
   end
 
+  def show_for_username
+     @tasks = User.find_by_userName(params[:userName]).tasks
+
+    render "show"
+  end
+
   def show
     @user = User.find(params[:user_id])
     @tasks = @user.tasks
@@ -24,12 +30,14 @@ class TasksController < ApplicationController
       @tasks = Task.new(params[:task])
       @tasks.user = User.find(params[:user_id])
 
-      if @tasks.save
-        format.html { redirect_to user_tasks_path, :param => "#{@tasks}" , notice: 'Task was successfully created.' }
-        format.json { render json: @tasks, status: :created, location: @tasks }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @tasks.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @tasks.save
+          format.html { redirect_to user_tasks_path, :param => "#{@tasks}" , notice: 'Task was successfully created.' }
+          format.json { render json: @tasks, status: :created, location: @tasks }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @tasks.errors, status: :unprocessable_entity }
+        end
       end
   end
 

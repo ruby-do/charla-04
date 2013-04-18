@@ -3,7 +3,7 @@ DevDo::Application.routes.draw do
     resource :tasks
   end
 
-  match ':userName/tasks' => 'tasks#index', :as => 'user_tasks_paths'
+  match ':userName/tasks' => 'tasks#show_for_username', :as => 'username_tasks'
 
   match ':userName' => 'users#show'
 

@@ -18,6 +18,7 @@
     <td><%= user.creation_date%></td>
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    <td><%= link_to 'Tasks', username_tasks_path(user.userName) %></td>
   </tr>
 <% end %>
 </table>
